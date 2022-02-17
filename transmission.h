@@ -1,0 +1,7 @@
+#ifndef REDESIGNED_PARAKEET_VOWELIZER_TRANSMISSION_H
+#define REDESIGNED_PARAKEET_VOWELIZER_TRANSMISSION_H
+
+
+int send_message_to_client_supported_commands(int client_socket);
+
+#endif //REDESIGNED_PARAKEET_VOWELIZER_TRANSMISSION_H
