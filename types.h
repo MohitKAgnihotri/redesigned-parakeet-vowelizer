@@ -7,6 +7,13 @@
 #define MAX_SUPPORT_COMMANDS 4
 #define MAX_COMMAND_STRING_LENGTH 128
 
+
+typedef enum error
+{
+    ERR_SUCCESS = 0,
+    ERR_FAILURE = 1,
+} error_t;
+
 typedef enum command_id
 {
     MERGE_VOWELS = 1,
