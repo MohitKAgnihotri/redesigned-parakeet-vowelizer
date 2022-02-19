@@ -1,0 +1,8 @@
+#include "types.h"
+
+#ifndef REDESIGNED_PARAKEET_VOWELIZER_COMMAND_HANDLER_H
+#define REDESIGNED_PARAKEET_VOWELIZER_COMMAND_HANDLER_H
+
+message_t * process_message(message_t *message);
+
+#endif //REDESIGNED_PARAKEET_VOWELIZER_COMMAND_HANDLER_H

@@ -6,31 +6,36 @@
 #define MAX_STRING_LENGTH 1024
 #define MAX_SUPPORT_COMMANDS 4
 #define MAX_COMMAND_STRING_LENGTH 128
+#define UDP_PORT_OFFSET 30000
+
+typedef struct pthread_args {
+    int client_id;
+    int client_socket_fd;
+} pthread_args_t;
 
 
 typedef enum error
 {
     ERR_SUCCESS = 0,
-    ERR_FAILURE = 1,
+    ERR_FAILURE,
+    ERR_SEND_CONN_CLOSED,
+    ERR_SEND_CONN_ERROR,
+    ERR_RECV_CONN_CLOSED,
+    ERR_RECV_CONN_ERROR,
+    ERR_SOCKET_CREATION_FAILED,
+    ERR_SOCKET_BIND_FAILED,
+    ERR_SOCKET_LISTEN_FAILED,
+    ERR_SOCKET_ACCEPT_FAILED,
 } error_t;
 
 typedef enum command_id
 {
     MERGE_VOWELS = 1,
     SPLIT_VOWELS = 2,
-    EXIT = 3,
-    SUPPORTED_COMMANDS = 4,
+    SUPPORTED_COMMANDS = 3,
+    EXIT = 4,
     LAST_COMMAND = 5
 }command_id_t;
-
-const char command_id_string[LAST_COMMAND][MAX_COMMAND_STRING_LENGTH] =
-{
-    "MERGE_VOWELS",
-    "SPLIT_VOWELS",
-    "EXIT",
-    "SUPPORTED_COMMANDS",
-    "LAST_COMMAND"
-};
 
 typedef enum message_type
 {
@@ -41,6 +46,7 @@ typedef enum message_type
 
 typedef struct command_supported {
     int number_of_commands;
+    int client_udp_port;
     int command_id[MAX_SUPPORT_COMMANDS];
     char command_id_string[MAX_SUPPORT_COMMANDS][MAX_COMMAND_STRING_LENGTH];
 }supported_commands_t;

@@ -1,8 +1,111 @@
 #include <string.h>
+#include <sys/socket.h>
+#include <stdio.h>
+#include <netinet/in.h>
+#include <pthread.h>
+#include <signal.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/socket.h>
+#include <sys/types.h>
+#include <unistd.h>
+#include <stdbool.h>
 #include "transmission.h"
 #include "types.h"
 
-int send_message_to_client_supported_commands(int client_socket)
+static const char command_id_string[LAST_COMMAND][MAX_COMMAND_STRING_LENGTH] =
+        {
+                "MERGE_VOWELS",
+                "SPLIT_VOWELS",
+                "EXIT",
+                "SUPPORTED_COMMANDS",
+                "LAST_COMMAND"
+        };
+
+int receive_message_udp(int socket_fd, message_t *message)
+{
+    error_t result = ERR_SUCCESS;
+    struct sockaddr from;
+    unsigned int addrlen = sizeof(from);
+
+    ssize_t bytes_received = recvfrom(socket_fd, message, sizeof(message_t), 0, &from, &addrlen);
+    if (bytes_received == 0)
+    {
+        perror("send");
+        printf("Error sending message, connection closed by the client\n");
+        result  = ERR_RECV_CONN_CLOSED;
+    } else if (bytes_received < 0)
+    {
+        perror("send");
+        printf("Error sending message\n");
+        result  = ERR_RECV_CONN_ERROR;
+    }
+
+    return result;
+}
+
+int send_message_udp(int socket_fd, message_t * message)
+{
+    error_t result = ERR_SUCCESS;
+    struct sockaddr to;
+    unsigned int addrlen = sizeof(to);
+
+    ssize_t bytes_sent = recvfrom(socket_fd, message, sizeof(message_t), 0, &to, &addrlen);
+    if (bytes_sent == 0)
+    {
+        perror("send");
+        printf("Error sending message, connection closed by the client\n");
+        result  = ERR_RECV_CONN_CLOSED;
+    } else if (bytes_sent < 0)
+    {
+        perror("send");
+        printf("Error sending message\n");
+        result  = ERR_RECV_CONN_ERROR;
+    }
+
+    return result;
+}
+
+int send_message_tcp(int socket_fd, message_t * message)
+{
+    error_t result = ERR_SUCCESS;
+    ssize_t bytes_sent = send(socket_fd, message, sizeof(message_t), 0);
+    if (bytes_sent == 0)
+    {
+        perror("send");
+        printf("Error sending message, connection closed by the client\n");
+        result  = ERR_SEND_CONN_CLOSED;
+    } else if (bytes_sent < 0)
+    {
+        perror("send");
+        printf("Error sending message\n");
+        result  = ERR_SEND_CONN_ERROR;
+    }
+
+    return result;
+}
+
+int recv_message_tcp(int socket_fd, message_t * message)
+{
+    error_t result = ERR_SUCCESS;
+    ssize_t bytes_received = recv(socket_fd, message, sizeof(message_t), 0);
+    if (bytes_received == 0)
+    {
+        perror("send");
+        printf("Error sending message, connection closed by the client\n");
+        result  = ERR_RECV_CONN_CLOSED;
+    } else if (bytes_received < 0)
+    {
+        perror("send");
+        printf("Error sending message\n");
+        result  = ERR_RECV_CONN_ERROR;
+    }
+
+    return result;
+}
+
+int send_message_to_client_supported_commands(int client_socket, int client_id)
 {
     message_t message;
     message.type = COMMAND_REQUEST;
@@ -13,23 +116,44 @@ int send_message_to_client_supported_commands(int client_socket)
         message.payload.supported_commands.command_id[i] = i;
         memcpy(message.payload.supported_commands.command_id_string[i], command_id_string[i], strlen(command_id_string[i]));
     }
+
     message.payload.supported_commands.number_of_commands = LAST_COMMAND - 1;
+    message.payload.supported_commands.client_udp_port = client_id + UDP_PORT_OFFSET;
 
+    send_message_tcp(client_socket, &message);
     return ERR_SUCCESS;
 }
 
 
-int receive_message_from_client(int client_socket)
+error_t setup_client_udp_socket(int client_id, int *client_udp_socket)
 {
+    int sockfd = 0;
+    struct sockaddr_in servaddr;
+
+    // Creating socket file descriptor
+    if ( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0 ) {
+        perror("socket creation failed");
+        *client_udp_socket = -1;
+        return ERR_SOCKET_CREATION_FAILED;
+    }
+
+    memset(&servaddr, 0, sizeof(servaddr));
+
+    // Filling server information
+    servaddr.sin_family    = AF_INET; // IPv4
+    servaddr.sin_addr.s_addr = INADDR_ANY;
+    servaddr.sin_port = htons(client_id + UDP_PORT_OFFSET);
+
+    // Bind the socket with the server address
+    if ( bind(sockfd, (const struct sockaddr *)&servaddr,
+              sizeof(servaddr)) < 0 )
+    {
+        perror("bind failed");
+        *client_udp_socket = -1;
+        return ERR_SOCKET_BIND_FAILED;
+    }
+
+    *client_udp_socket = sockfd;
     return ERR_SUCCESS;
 }
 
-message_t * process_message_from_client(int client_socket)
-{
-    return ERR_SUCCESS;
-}
-
-int send_message_to_client(message_t * message, int client_socket)
-{
-    return ERR_SUCCESS;
-}
