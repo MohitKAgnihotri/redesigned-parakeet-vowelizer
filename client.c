@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    // receive set of supported commands
+    // receive set of supported commands & UDP port Number
     message_t message;
     error_t  status = recv_message_tcp(socket_fd, &message);
     if (status != ERR_SUCCESS)
@@ -76,7 +76,8 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    process_message(&message);
+    message_t processed_message process_message(&message);
+
 
     close(socket_fd);
     return 0;

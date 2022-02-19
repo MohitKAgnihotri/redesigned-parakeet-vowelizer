@@ -18,8 +18,8 @@ static const char command_id_string[LAST_COMMAND][MAX_COMMAND_STRING_LENGTH] =
         {
                 "MERGE_VOWELS",
                 "SPLIT_VOWELS",
-                "EXIT",
                 "SUPPORTED_COMMANDS",
+                "EXIT",
                 "LAST_COMMAND"
         };
 
@@ -108,13 +108,14 @@ int recv_message_tcp(int socket_fd, message_t * message)
 int send_message_to_client_supported_commands(int client_socket, int client_id)
 {
     message_t message;
+    memset(&message, 0, sizeof(message_t));
     message.type = COMMAND_REQUEST;
     message.command_id = SUPPORTED_COMMANDS;
 
-    for (int i = 0; i < LAST_COMMAND; i++)
+    for (int i = 1; ((i < LAST_COMMAND) && (i < MAX_SUPPORT_COMMANDS)); i++)
     {
-        message.payload.supported_commands.command_id[i] = i;
-        memcpy(message.payload.supported_commands.command_id_string[i], command_id_string[i], strlen(command_id_string[i]));
+        message.payload.supported_commands.command_id[i-1] = i;
+        memcpy(message.payload.supported_commands.command_id_string[i-1], command_id_string[i-1], strlen(command_id_string[i-1]));
     }
 
     message.payload.supported_commands.number_of_commands = LAST_COMMAND - 1;
