@@ -13,6 +13,7 @@
 
 #define SERVER_NAME_LEN_MAX 255
 
+
 int main(int argc, char *argv[])
 {
     char server_name[SERVER_NAME_LEN_MAX + 1] = {0};
@@ -76,9 +77,33 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    message_t processed_message process_message(&message);
+    message_t *processed_message  = process_message(&message);
+    if (processed_message == NULL)
+    {
+        fprintf(stderr, "Error processing message\n");
+        exit(EXIT_FAILURE);
+    }
 
+    message_t send_merge_vowel_cmd;
+    memset(&send_merge_vowel_cmd, 0, sizeof (message_t));
+
+    send_merge_vowel_cmd.type = COMMAND_REQUEST;
+    send_merge_vowel_cmd.command_id = MERGE_VOWELS;
+    memcpy(send_merge_vowel_cmd.payload.command_merge_vowels.consonants,"h ll  th r !", strlen("h ll  th r !"));
+    memcpy(send_merge_vowel_cmd.payload.command_merge_vowels.vowel," e  o   e e ", strlen("h ll  th r !"));
+    send_message_tcp(socket_fd, &send_merge_vowel_cmd);
+
+
+    sleep(100);
 
     close(socket_fd);
     return 0;
 }
+
+
+/*
+ * Enter the command:
+ * 1 For MERGE_VOWEL
+ * 2 For SPLIT
+ * 3 EXIT
+ * */

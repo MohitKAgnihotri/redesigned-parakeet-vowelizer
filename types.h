@@ -13,7 +13,6 @@ typedef struct pthread_args {
     int client_socket_fd;
 } pthread_args_t;
 
-
 typedef enum error
 {
     ERR_SUCCESS = 0,
@@ -32,8 +31,8 @@ typedef enum command_id
 {
     MERGE_VOWELS = 1,
     SPLIT_VOWELS = 2,
-    SUPPORTED_COMMANDS = 3,
-    EXIT = 4,
+    EXIT = 3,
+    SUPPORTED_COMMANDS = 4,
     LAST_COMMAND = 5
 }command_id_t;
 
@@ -52,7 +51,7 @@ typedef struct command_supported {
 }supported_commands_t;
 
 typedef struct command_merge_vowels {
-    char word[MAX_STRING_LENGTH];
+    char consonants[MAX_STRING_LENGTH];
     char vowel[MAX_STRING_LENGTH];
 }command_merge_vowels_t;
 
