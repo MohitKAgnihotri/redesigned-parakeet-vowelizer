@@ -9,8 +9,8 @@ int recv_message_tcp(int socket_fd, message_t * message);
 int send_message_tcp(int socket_fd, message_t * message);
 
 int receive_message_udp(int socket_fd, message_t *message);
-int send_message_udp(int socket_fd, message_t * message);
+int send_message_udp(int socket_fd, message_t * message, struct sockaddr *to);
 
-error_t setup_client_udp_socket(int client_id, int *client_udp_socket);
+error_t setup_udp_socket(int client_id, int *client_udp_socket);
 
 #endif //REDESIGNED_PARAKEET_VOWELIZER_TRANSMISSION_H

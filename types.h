@@ -6,7 +6,8 @@
 #define MAX_STRING_LENGTH 1024
 #define MAX_SUPPORT_COMMANDS 10
 #define MAX_COMMAND_STRING_LENGTH 128
-#define UDP_PORT_OFFSET 30000
+#define UDP_PORT_OFFSET_CLIENT 30000
+#define UDP_PORT_OFFSET_SERVER 40000
 
 typedef struct pthread_args {
     int client_id;

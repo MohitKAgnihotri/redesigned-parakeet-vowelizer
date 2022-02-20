@@ -45,13 +45,12 @@ int receive_message_udp(int socket_fd, message_t *message)
     return result;
 }
 
-int send_message_udp(int socket_fd, message_t * message)
+int send_message_udp(int socket_fd, message_t * message, struct sockaddr *to)
 {
     error_t result = ERR_SUCCESS;
-    struct sockaddr to;
-    unsigned int addrlen = sizeof(to);
+    unsigned int addrlen = sizeof(struct sockaddr);
 
-    ssize_t bytes_sent = recvfrom(socket_fd, message, sizeof(message_t), 0, &to, &addrlen);
+    ssize_t bytes_sent = sendto(socket_fd, message, sizeof(message_t), 0, to, addrlen);
     if (bytes_sent == 0)
     {
         perror("send");
@@ -89,6 +88,7 @@ int send_message_tcp(int socket_fd, message_t * message)
 int recv_message_tcp(int socket_fd, message_t * message)
 {
     error_t result = ERR_SUCCESS;
+    memset(message, 0, sizeof(message_t));
     ssize_t bytes_received = recv(socket_fd, message, sizeof(message_t), 0);
     if (bytes_received == 0)
     {
@@ -105,7 +105,7 @@ int recv_message_tcp(int socket_fd, message_t * message)
     return result;
 }
 
-int send_message_to_client_supported_commands(int client_socket, int client_id)
+int send_message_to_client_supported_commands(int client_socket, int port_number)
 {
     message_t message;
     memset(&message, 0, sizeof(message_t));
@@ -119,14 +119,14 @@ int send_message_to_client_supported_commands(int client_socket, int client_id)
     }
 
     message.payload.supported_commands.number_of_commands = LAST_COMMAND - 1;
-    message.payload.supported_commands.client_udp_port = client_id + UDP_PORT_OFFSET;
+    message.payload.supported_commands.client_udp_port = port_number;
 
     send_message_tcp(client_socket, &message);
     return ERR_SUCCESS;
 }
 
 
-error_t setup_client_udp_socket(int client_id, int *client_udp_socket)
+error_t setup_udp_socket(int port_number, int *client_udp_socket)
 {
     int sockfd = 0;
     struct sockaddr_in servaddr;
@@ -143,7 +143,7 @@ error_t setup_client_udp_socket(int client_id, int *client_udp_socket)
     // Filling server information
     servaddr.sin_family    = AF_INET; // IPv4
     servaddr.sin_addr.s_addr = INADDR_ANY;
-    servaddr.sin_port = htons(client_id + UDP_PORT_OFFSET);
+    servaddr.sin_port = htons(port_number);
 
     // Bind the socket with the server address
     if ( bind(sockfd, (const struct sockaddr *)&servaddr,
