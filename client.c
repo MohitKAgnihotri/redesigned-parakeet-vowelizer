@@ -75,15 +75,16 @@ int main(int argc, char *argv[])
     }
 
     // receive set of supported commands & UDP port Number
-    message_t incoming_message;
-    error_t  status = recv_message_tcp(socket_fd_tcp, &incoming_message);
+    message_t incoming_message_tcp;
+    message_t incoming_message_udp;
+    error_t  status = recv_message_tcp(socket_fd_tcp, &incoming_message_tcp);
     if (status != ERR_SUCCESS)
     {
         fprintf(stderr, "Error receiving message: %d\n", status);
         exit(EXIT_FAILURE);
     }
 
-    message_t *processed_message  = process_message(&incoming_message);
+    message_t *processed_message  = process_message(&incoming_message_tcp);
     if (processed_message == NULL)
     {
         fprintf(stderr, "Error processing message\n");
@@ -105,7 +106,7 @@ int main(int argc, char *argv[])
         switch (choice) {
             case 1:
                 outgoing_message.type = COMMAND_REQUEST;
-                outgoing_message.command_id = SPLIT_VOWELS;
+                outgoing_message.command_id = SPLIT_VOWELS_BASIC;
                 printf("Enter the string to denvowel \n");
                 get_line_from_stdin(outgoing_message.payload.command_split_vowels.input_string, MAX_STRING_LENGTH);
                 status = send_message_tcp(socket_fd_tcp, &outgoing_message);
@@ -115,7 +116,7 @@ int main(int argc, char *argv[])
                     exit(EXIT_FAILURE);
                 }
 
-                status = recv_message_tcp(socket_fd_tcp, &incoming_message);
+                status = recv_message_tcp(socket_fd_tcp, &incoming_message_tcp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -123,10 +124,10 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("consonants: :%s:\n", incoming_message.payload.response_split_vowels.output_string_consonant);
+                    printf("consonants: :%s:\n", incoming_message_tcp.payload.response_split_vowels.output_string_consonant);
                 }
 
-                status = receive_message_udp(socket_fd_udp, &incoming_message);
+                status = receive_message_udp(socket_fd_udp, &incoming_message_udp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -134,12 +135,12 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("vowels: :%s:\n", incoming_message.payload.response_split_vowels.output_string_vowel);
+                    printf("vowels: :%s:\n", incoming_message_udp.payload.response_split_vowels.output_string_vowel);
                 }
                 break;
             case 2:
                 outgoing_message.type = COMMAND_REQUEST;
-                outgoing_message.command_id = MERGE_VOWELS;
+                outgoing_message.command_id = MERGE_VOWELS_BASIC;
 
                 printf("Enter the consonant part of the string to envowel \n");
                 get_line_from_stdin(outgoing_message.payload.command_merge_vowels.consonants, MAX_STRING_LENGTH);
@@ -154,7 +155,7 @@ int main(int argc, char *argv[])
                     exit(EXIT_FAILURE);
                 }
 
-                status = recv_message_tcp(socket_fd_tcp, &incoming_message);
+                status = recv_message_tcp(socket_fd_tcp, &incoming_message_tcp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -162,12 +163,12 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("envoweled string: %s\n", incoming_message.payload.response_merge_vowels.output_string);
+                    printf("envoweled string: %s\n", incoming_message_tcp.payload.response_merge_vowels.output_string);
                 }
                 break;
             case 3:
                 outgoing_message.type = COMMAND_REQUEST;
-                outgoing_message.command_id = SPLIT_VOWELS;
+                outgoing_message.command_id = SPLIT_VOWELS_ADV;
                 printf("Enter the string to denvowel \n");
                 get_line_from_stdin(outgoing_message.payload.command_split_vowels.input_string, MAX_STRING_LENGTH);
                 status = send_message_tcp(socket_fd_tcp, &outgoing_message);
@@ -177,7 +178,7 @@ int main(int argc, char *argv[])
                     exit(EXIT_FAILURE);
                 }
 
-                status = recv_message_tcp(socket_fd_tcp, &incoming_message);
+                status = recv_message_tcp(socket_fd_tcp, &incoming_message_tcp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -185,9 +186,9 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("consonants: %s\n", incoming_message.payload.response_split_vowels.output_string_consonant);
+                    printf("consonants: %s\n", incoming_message_tcp.payload.response_split_vowels.output_string_consonant);
                 }
-                status = receive_message_udp(socket_fd_udp, &incoming_message);
+                status = receive_message_udp(socket_fd_udp, &incoming_message_udp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -195,12 +196,12 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("vowels: %s\n", incoming_message.payload.response_split_vowels.output_string_vowel);
+                    printf("vowels: %s\n", incoming_message_udp.payload.response_split_vowels.output_string_vowel);
                 }
                 break;
             case 4:
                 outgoing_message.type = COMMAND_REQUEST;
-                outgoing_message.command_id = MERGE_VOWELS;
+                outgoing_message.command_id = MERGE_VOWELS_ADV;
 
                 printf("Enter the consonant part of the string to envowel \n");
                 get_line_from_stdin(outgoing_message.payload.command_merge_vowels.consonants, MAX_STRING_LENGTH);
@@ -215,7 +216,7 @@ int main(int argc, char *argv[])
                     exit(EXIT_FAILURE);
                 }
 
-                status = recv_message_tcp(socket_fd_tcp, &incoming_message);
+                status = recv_message_tcp(socket_fd_tcp, &incoming_message_tcp);
                 if (status != ERR_SUCCESS)
                 {
                     fprintf(stderr, "Error receiving message: %d\n", status);
@@ -223,10 +224,18 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
-                    printf("envoweled string: %s\n", incoming_message.payload.response_merge_vowels.output_string);
+                    printf("envoweled string: %s\n", incoming_message_tcp.payload.response_merge_vowels.output_string);
                 }
                 break;
             case 5:
+                outgoing_message.type = COMMAND_REQUEST;
+                outgoing_message.command_id = EXIT;
+                status = send_message_tcp(socket_fd_tcp, &outgoing_message);
+                if (status != ERR_SUCCESS)
+                {
+                    fprintf(stderr, "Error sending message: %d\n", status);
+                    exit(EXIT_FAILURE);
+                }
                 exit_is_requested = true;
                 break;
             default:

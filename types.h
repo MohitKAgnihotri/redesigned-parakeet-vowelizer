@@ -30,11 +30,13 @@ typedef enum error
 
 typedef enum command_id
 {
-    MERGE_VOWELS = 1,
-    SPLIT_VOWELS = 2,
-    EXIT = 3,
-    SUPPORTED_COMMANDS = 4,
-    LAST_COMMAND = 5
+    MERGE_VOWELS_BASIC = 1,
+    SPLIT_VOWELS_BASIC = 2,
+    MERGE_VOWELS_ADV = 3,
+    SPLIT_VOWELS_ADV = 4,
+    EXIT = 5,
+    SUPPORTED_COMMANDS = 6,
+    LAST_COMMAND = 7
 }command_id_t;
 
 typedef enum message_type
