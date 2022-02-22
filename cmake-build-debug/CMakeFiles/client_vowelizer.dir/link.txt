@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/client_vowelizer.dir/transmission.c.o CMakeFiles/client_vowelizer.dir/client.c.o CMakeFiles/client_vowelizer.dir/command_handler.c.o CMakeFiles/client_vowelizer.dir/user_interface.c.o  -o client_vowelizer  -lpthread 

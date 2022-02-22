@@ -1,0 +1,4 @@
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/CMakeFiles/edit_cache.dir
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/CMakeFiles/client_vowelizer.dir
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/CMakeFiles/server_vowelizer.dir

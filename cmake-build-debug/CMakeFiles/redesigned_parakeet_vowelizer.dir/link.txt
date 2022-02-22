@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/redesigned_parakeet_vowelizer.dir/server.c.o CMakeFiles/redesigned_parakeet_vowelizer.dir/transmission.c.o CMakeFiles/redesigned_parakeet_vowelizer.dir/client.c.o  -o redesigned_parakeet_vowelizer  -lpthread 

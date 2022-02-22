@@ -6,10 +6,10 @@
 #include <stdlib.h>
 #include "command_handler.h"
 
-
-
-static message_t *process_command_MERGE_VOWELS( message_t *msg);
-static message_t *process_command_SPLIT_VOWELS( message_t *msg);
+static message_t *process_command_MERGE_VOWELS_BASIC( message_t *msg);
+static message_t *process_command_SPLIT_VOWELS_BASIC( message_t *msg);
+static message_t *process_command_MERGE_VOWELS_ADV( message_t *msg);
+static message_t *process_command_SPLIT_VOWELS_ADV( message_t *msg);
 static message_t *process_command_SUPPORTED_COMMANDS( message_t *msg);
 static message_t *process_command_Exit( message_t *msg);
 

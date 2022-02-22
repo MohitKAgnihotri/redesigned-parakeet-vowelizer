@@ -1,0 +1,1 @@
+/usr/bin/gcc -g   CMakeFiles/server_vowelizer.dir/server.c.o CMakeFiles/server_vowelizer.dir/transmission.c.o CMakeFiles/server_vowelizer.dir/command_handler.c.o  -o server_vowelizer  -lpthread 

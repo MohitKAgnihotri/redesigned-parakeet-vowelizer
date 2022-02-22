@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="redesigned_parakeet_vowelizer"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client_vowelizer">
+				<Option output="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/client_vowelizer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 client_vowelizer"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="client_vowelizer/fast">
+				<Option output="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/client_vowelizer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 client_vowelizer/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server_vowelizer">
+				<Option output="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/server_vowelizer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 server_vowelizer"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="server_vowelizer/fast">
+				<Option output="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/server_vowelizer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 server_vowelizer/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/client.c">
+			<Option target="client_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/client.h">
+			<Option target="client_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/command_handler.c">
+			<Option target="client_vowelizer"/>
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/command_handler.h">
+			<Option target="client_vowelizer"/>
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/server.c">
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/server.h">
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/transmission.c">
+			<Option target="client_vowelizer"/>
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/transmission.h">
+			<Option target="client_vowelizer"/>
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/types.h">
+			<Option target="client_vowelizer"/>
+			<Option target="server_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/user_interface.c">
+			<Option target="client_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/user_interface.h">
+			<Option target="client_vowelizer"/>
+		</Unit>
+		<Unit filename="/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

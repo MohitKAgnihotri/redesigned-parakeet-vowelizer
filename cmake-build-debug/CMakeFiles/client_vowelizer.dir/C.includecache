@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/command_handler.c
+stddef.h
+-
+stdio.h
+-
+malloc.h
+-
+string.h
+-
+stdlib.h
+-
+command_handler.h
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/command_handler.h
+
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/command_handler.h
+types.h
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/types.h
+
+/mnt/c/Workspace/Chegg/2022/redesigned-parakeet-vowelizer/types.h
+
